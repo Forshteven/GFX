@@ -12,7 +12,7 @@ finish_dates = []
 def pars_date(date_str):
     return datetime.strptime(date_str, '%d-%m-%Y').date()
 
-for i in range(25, 426):
+for i in range(25, 75):
     name = sheet["B" + str(i)].value
     start_date = sheet[f'R{i}'].value
     finish_date = sheet[f'S{i}'].value
@@ -21,13 +21,12 @@ for i in range(25, 426):
         finish_date = datetime.strftime(finish_date, '%d-%m-%Y')
         start_dates_parsed = pars_date(start_date)
         finish_dates_parsed = pars_date(finish_date)
-        names.append(name)
-        start_dates.append(start_dates_parsed)
-        finish_dates.append(finish_dates_parsed)
+        names.insert(0, name)
+        start_dates.insert(0, start_dates_parsed)
+        finish_dates.insert(0, finish_dates_parsed)
 
-print(names)
-print(start_dates)
-print(finish_dates)
+
+
 
 
 

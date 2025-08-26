@@ -4,7 +4,7 @@ import matplotlib.dates as mdates
 
 from main import names, start_dates, finish_dates
 
-fig, ax = plt.subplots(dpi=20)
+fig, ax = plt.subplots(dpi=100)
 
 width = 0.5
 color = "tab:blue"
@@ -18,8 +18,8 @@ for i, event in enumerate(names):
         not in range(11, 16) else 'дней')
     x_text = start_dates[i] + (finish_dates[i] - start_dates[i]) / 2
     y_text = i + 0.5
-    ax.text(x_text, y_text, f'{start_dates[i]} - {finish_dates[i]}, '
-                            f'{finish_dates[i]} - {start_dates[i]} {days_word}', ha='center', va='center', fontsize=1)
+    ax.text(x_text, y_text, f'{start_dates[i].strftime('%d-%m-%Y')} - {finish_dates[i].strftime('%d-%m-%Y')}, '
+                            f'{(finish_dates[i] - start_dates[i]).days} {days_word}', ha='center', va='center', fontsize=5)
 
 ax.set_yticks(range(len(names)))
 ax.set_yticklabels(names)
@@ -30,7 +30,7 @@ ax.xaxis.set_major_locator(mdates.MonthLocator())
 ax.xaxis.set_major_formatter(mdates.DateFormatter('%b %Y'))
 # Показать график
 plt.xticks(rotation=90, fontsize=8)
-plt.yticks(fontsize=3)
+plt.yticks(fontsize=8)
 plt.grid(True, which='both', color='black', linewidth=1)
 plt.grid(True, which='minor', linestyle=':', color='grey', linewidth=0.5)
 plt.plot()
