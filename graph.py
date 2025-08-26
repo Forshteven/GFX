@@ -1,3 +1,5 @@
+from datetime import timedelta
+
 import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
 
@@ -23,15 +25,16 @@ for i, event in enumerate(names):
 
 ax.set_yticks(range(len(names)))
 ax.set_yticklabels(names)
-start_date = min(start_dates)
-ax.set_xlim(left=start_date, right=max(finish_dates))
-ax.set_title('График')
+start_date = min(start_dates)-timedelta(days=15)
+ax.set_xlim(left=start_date, right=max(finish_dates)+timedelta(days=15))
+ax.set_title('График демонтажных работ')
 ax.xaxis.set_major_locator(mdates.MonthLocator())
 ax.xaxis.set_major_formatter(mdates.DateFormatter('%b %Y'))
 # Показать график
-plt.xticks(rotation=90, fontsize=8)
+plt.xticks(rotation=0, fontsize=8)
+plt.ylim([-1, len(names)])
 plt.yticks(fontsize=8)
 plt.grid(True, which='both', color='black', linewidth=1)
-plt.grid(True, which='minor', linestyle=':', color='grey', linewidth=0.5)
+plt.subplots_adjust(left=0.43, right=0.98, bottom=0.05, top=0.95)
 plt.plot()
 plt.show()
