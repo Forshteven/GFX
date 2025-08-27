@@ -27,7 +27,7 @@ ax.set_yticks(range(len(names)))
 ax.set_yticklabels(names)
 start_date = min(start_dates)-timedelta(days=15)
 ax.set_xlim(left=start_date, right=max(finish_dates)+timedelta(days=15))
-ax.set_title('График демонтажных работ')
+ax.set_title('График работ по монтажу ГМО Красногорского ГУ')
 ax.xaxis.set_major_locator(mdates.MonthLocator())
 ax.xaxis.set_major_formatter(mdates.DateFormatter('%b %Y'))
 # Показать график
