@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
 
 
-from main import names, start_dates, finish_dates
+from several_sheets import names, start_dates, finish_dates
 
 fig, ax = plt.subplots(dpi=100)
 
