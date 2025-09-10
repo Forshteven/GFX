@@ -1,5 +1,5 @@
 import pandas as pd
-from mpmath import extend
+
 
 excel_file = pd.ExcelFile("data.xlsx")
 
@@ -26,4 +26,4 @@ for df in finish_dates_df.values():
 
 time_deltas = []
 
-print(help(extend))
+
