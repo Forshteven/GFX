@@ -23,12 +23,13 @@ for i in range(1, 100):
 #         start_dates.insert(0, start_date.date())
 #         finish_date = start_date.date() + timedelta(days=duration_str)
 #         finish_dates.insert(0, finish_date)
+#         names.insert(0, name)
 #     elif start_date is not None and duration_str is not None:
 #         start_date_parsed = pars_date(start_date)
 #         finish_date_parsed = pars_date(start_date) + timedelta(days=duration_str)
 #         names.insert(0, name)
-#         start_dates.insert(0, start_dates_parsed)
-#         finish_dates.insert(0, finish_dates_parsed)
+#         start_dates.insert(0, start_date_parsed)
+#         finish_dates.insert(0, finish_date_parsed)
 #     else:
 #         continue
 # Часть кода для случая, когда указаны даты начала и окончания работ
@@ -37,14 +38,16 @@ for i in range(1, 100):
     if isinstance(start_date and finish_date, datetime):
         start_dates.insert(0, start_date.date())
         finish_dates.insert(0,finish_date.date())
+        names.insert(0, name)
     elif start_date is not None and finish_date is not None:
         start_date_parsed = pars_date(start_date)
         finish_date_parsed = pars_date(finish_date)
         start_dates.insert(0, start_date_parsed)
         finish_dates.insert(0, finish_date_parsed)
+        names.insert(0, name)
     else:
         continue
-    names.insert(0, name)
+
 
 
 
