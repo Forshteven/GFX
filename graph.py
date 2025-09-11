@@ -1,10 +1,10 @@
 from datetime import timedelta
-
+import seaborn as sns
 import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
 
 
-from several_sheets import names, start_dates, finish_dates
+from main import names, start_dates, finish_dates
 
 fig, ax = plt.subplots(dpi=100)
 
@@ -31,10 +31,12 @@ ax.set_title('График работ по монтажу ГМО Красног�
 ax.xaxis.set_major_locator(mdates.MonthLocator())
 ax.xaxis.set_major_formatter(mdates.DateFormatter('%b %Y'))
 # Показать график
-plt.xticks(rotation=0, fontsize=8)
+plt.xticks(rotation=45, fontsize=7)
 plt.ylim([-1, len(names)])
 plt.yticks(fontsize=8)
 plt.grid(True, which='both', color='black', linewidth=1)
 plt.subplots_adjust(left=0.43, right=0.98, bottom=0.05, top=0.95)
+sns.set_style("whitegrid")
+
 plt.plot()
 plt.show()
