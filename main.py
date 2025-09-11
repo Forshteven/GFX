@@ -1,7 +1,7 @@
 """Модуль для работы с файлом xlsx, включающим один лист"""
 from openpyxl.reader.excel import load_workbook
 from datetime import datetime, timedelta
-import re
+
 
 def pars_date(date_str):
     return datetime.strptime(date_str, '%d-%m-%Y').date()
