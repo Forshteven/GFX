@@ -21,7 +21,7 @@ for i, event in enumerate(names):
         not in range(11, 16) else 'дней')
     x_text = start_dates[i] + (finish_dates[i] - start_dates[i]) / 2
     y_text = i + 0.5
-    ax.text(x_text, y_text, f'{start_dates[i].strftime('%d-%m-%Y')} - {finish_dates[i].strftime('%d-%m-%Y')}, '
+    ax.text(x_text, y_text, f'{start_dates[i].strftime('%d.%m.%Y')} - {finish_dates[i].strftime('%d.%m.%Y')}, '
                             f'{(finish_dates[i] - start_dates[i]).days} {days_word}, '
             f'{number_of_men[i]} чел.', ha='center', va='center', fontsize=4)
 
@@ -37,7 +37,7 @@ plt.xticks(rotation=90, fontsize=6)
 plt.ylim([-1, len(names)])
 plt.yticks(fontsize=6)
 plt.grid(True, which='both', color='black', linewidth=1)
-plt.subplots_adjust(left=0.3, right=0.98, bottom=0.1, top=0.95)
+plt.subplots_adjust(left=0.33, right=0.98, bottom=0.1, top=0.95)
 sns.set_style("whitegrid")
 
 plt.plot()
