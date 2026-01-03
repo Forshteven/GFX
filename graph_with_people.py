@@ -4,6 +4,7 @@ import pandas as pd
 import numpy as np
 from datetime import timedelta
 import matplotlib.dates as mdates
+from sympy.printing.pretty.pretty_symbology import line_width
 
 from main import names, start_dates, finish_dates, number_of_men
 
@@ -65,21 +66,27 @@ plt.xticks(rotation=90, fontsize=6)
 plt.ylim([-1, len(names)])
 plt.yticks(fontsize=6)
 plt.grid(True, which='both', color='black', linewidth=1)
-plt.subplots_adjust(left=0.5, right=0.95, bottom=0.1, top=0.95)
+plt.subplots_adjust(left=0.35, right=0.95, bottom=0.1, top=0.95)
 sns.set_style("whitegrid")
 
 # Вторая ось для отображения общей численности сотрудников
 ax2 = ax.twinx()
 
-# График суммарной численности сотрудников
-ax2.fill_between(employees_df['Date'], employees_df['Total Employees'], alpha=0.5, color="tab:green",
-                 label='Общая численность сотрудников')
+# Строим столбчатую диаграмму (вертикальные столбики)
+ax2.bar(employees_df['Date'], employees_df['Total Employees'], align='center',
+        color="tab:green", alpha=0.35, width=10,
+        label='Общая численность рабочих')
 
+# Аннотируем количество сотрудников над каждым столбцом
+for index, row in employees_df.iterrows():
+    ax2.annotate(str(row['Total Employees']), xy=(row['Date'], row['Total Employees']),
+                  xytext=(0, 3), textcoords="offset points", ha='center', fontsize=5, color="tab:green")
 # Оформление второй оси
-ax2.set_ylabel('Общее количество сотрудников', rotation=90, labelpad=5)
+ax2.set_ylabel('Общее количество рабочих', rotation=90, labelpad=5)
 ax2.tick_params(axis='y', colors='tab:green')
 
 max_total_employees = max(total_employees_by_day.values())
-plt.yticks(np.arange(0, max_total_employees + 5, step=5), fontsize=5)
+plt.yticks(np.arange(0, max_total_employees + 5, step=5), fontsize=6)
+plt.grid(visible=True, linewidth=0.5)
 
 plt.show()

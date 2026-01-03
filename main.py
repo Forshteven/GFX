@@ -6,7 +6,7 @@ from datetime import datetime, timedelta
 def pars_date(date_str):
     return datetime.strptime(date_str, '%d-%m-%Y').date()
 
-wb = load_workbook("Omsk.xlsx", data_only=True)
+wb = load_workbook("Gorodets.xlsx", data_only=True)
 sheet = wb['Данные по ГМО']
 
 names = []
@@ -15,7 +15,7 @@ finish_dates = []
 time_deltas = []
 number_of_men = []
 
-for i in range(1, 100):
+for i in range(2, 100):
     name = sheet["A" + str(i)].value
     number = sheet['F' + str(i)].value
 # Часть кода для случая, когда указаны даты начала работ и их продолжительности, но не указаны даты окончания работ
